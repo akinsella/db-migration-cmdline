@@ -4,7 +4,7 @@
     <!-- Project Information -->
     <groupId>org.helyx.db-migration-cmdline</groupId>
 	<artifactId>db-migration-cmdline</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 
     <name>DB Migration Command Line Tool</name>
 
