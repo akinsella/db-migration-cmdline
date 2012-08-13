@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Db-migration-cmdline by akinsella</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Db-migration-cmdline</h1>
+        <p>db-migration standalone command line tool</p>
+
+        <p class="view"><a href="https://github.com/akinsella/db-migration-cmdline">View the Project on GitHub <small>akinsella/db-migration-cmdline</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/akinsella/db-migration-cmdline/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/akinsella/db-migration-cmdline/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/akinsella/db-migration-cmdline">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Command line for a sql files directory:</h1>
+
+<ul>
+<li>java -jar db-migration-cmdline-1.0.0-SNAPSHOT.jar -c MIGRATE -f sql-files.zip -t DEV-APP,INT-APP</li>
+</ul><p>or for a sql files zip:</p>
+
+<ul>
+<li>java -jar db-migration-cmdline-1.0.0-SNAPSHOT.jar -c MIGRATE -f sql-files -t DEV-APP,INT-APP</li>
+</ul><h1>Release a version</h1>
+
+<ul>
+<li>mvn --batch-mode release:clean release:prepare release:perform -DreleaseVersion=1.0.0 -DdevelopmentVersion=1.0.1-SNAPSHOT -Dtag=1.0.0</li>
+</ul><h1>Remove a existing tag after a release failure:</h1>
+
+<ul>
+<li>git tag -d '1.0.0'</li>
+<li>git push origin :refs/tags/1.0.0</li>
+</ul><h1>Install</h1>
+
+<ul>
+<li>Create a directory in you user home: ~/.db-migration</li>
+<li>Add file: settings.xml</li>
+<li>
+<p>Add confgiurations to your: settings.xml</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;dbmigration&gt;
+    &lt;databases&gt;
+        &lt;database name="DEV-APP"&gt;
+            &lt;driver&gt;com.mysql.jdbc.Driver&lt;/driver&gt;
+            &lt;url&gt;jdbc:mysql://localhost/dev_app&lt;/url&gt;
+            &lt;username&gt;app_user&lt;/username&gt;
+            &lt;password&gt;app_password&lt;/password&gt;
+        &lt;/database&gt;
+        &lt;database name="INT-APP" prod="true"&gt;
+            &lt;driver&gt;com.mysql.jdbc.Driver&lt;/driver&gt;
+            &lt;url&gt;jdbc:mysql://dev-linux-mysql5/int_app&lt;/url&gt;
+            &lt;username&gt;app_user&lt;/username&gt;
+            &lt;password&gt;app_password&lt;/password&gt;
+        &lt;/database&gt;
+    &lt;/databases&gt;
+&lt;/dbmigration&gt;
+</code></pre>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/akinsella">akinsella</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
