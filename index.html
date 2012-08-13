@@ -28,23 +28,11 @@
         </ul>
       </header>
       <section>
-        <h1>Command line for a sql files directory:</h1>
+        <h1>Download</h1>
 
 <ul>
-<li>java -jar db-migration-cmdline-1.0.0-SNAPSHOT.jar -c MIGRATE -f sql-files.zip -t DEV-APP,INT-APP</li>
-</ul><p>or for a sql files zip:</p>
-
-<ul>
-<li>java -jar db-migration-cmdline-1.0.0-SNAPSHOT.jar -c MIGRATE -f sql-files -t DEV-APP,INT-APP</li>
-</ul><h1>Release a version</h1>
-
-<ul>
-<li>mvn --batch-mode release:clean release:prepare release:perform -DreleaseVersion=1.0.0 -DdevelopmentVersion=1.0.1-SNAPSHOT -Dtag=1.0.0</li>
-</ul><h1>Remove a existing tag after a release failure:</h1>
-
-<ul>
-<li>git tag -d '1.0.0'</li>
-<li>git push origin :refs/tags/1.0.0</li>
+<li>Version 1.0.0: <a href="http://maven.helyx.org/repository/release/org/helyx/db-migration-cmdline/db-migration-cmdline/1.0.0/db-migration-cmdline-1.0.0.jar">db-migration-cmdline-1.0.0.jar</a>
+</li>
 </ul><h1>Install</h1>
 
 <ul>
@@ -72,6 +60,26 @@
 &lt;/dbmigration&gt;
 </code></pre>
 </li>
+</ul><h1>Execute</h1>
+
+<p>Command line for a sql files directory:</p>
+
+<ul>
+<li>
+<p>java -jar db-migration-cmdline-1.0.0-SNAPSHOT.jar -c MIGRATE -f sql-files.zip -t DEV-APP,INT-APP</p>
+
+<p>Or for a sql files zip:</p>
+</li>
+<li><p>java -jar db-migration-cmdline-1.0.0-SNAPSHOT.jar -c MIGRATE -f sql-files -t DEV-APP,INT-APP</p></li>
+</ul><h1>Release a version</h1>
+
+<ul>
+<li>mvn --batch-mode release:clean release:prepare release:perform -DreleaseVersion=1.0.0 -DdevelopmentVersion=1.0.1-SNAPSHOT -Dtag=1.0.0</li>
+</ul><h1>Remove a existing tag after a release failure:</h1>
+
+<ul>
+<li>git tag -d '1.0.0'</li>
+<li>git push origin :refs/tags/1.0.0</li>
 </ul>
       </section>
       <footer>
@@ -80,6 +88,16 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-1889791-19");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
