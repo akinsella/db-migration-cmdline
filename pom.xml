@@ -1,0 +1,389 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Project Information -->
+    <groupId>org.helyx.db-migration-cmdline</groupId>
+	<artifactId>db-migration-cmdline</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+    <name>DB Migration Command Line Tool</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <slf4j.version>1.6.4</slf4j.version>
+        <spring.version>3.1.1.RELEASE</spring.version>
+        <guava.version>11.0</guava.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-cli.version>1.2</commons-cli.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <joda-time.version>1.6.2</joda-time.version>
+        <mysql-connector-java.version>5.1.17</mysql-connector-java.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <jaxen.version>1.1.1</jaxen.version>
+        <db-migration.version>0.9.9-m5</db-migration.version>
+
+        <testng.version>6.0.1</testng.version>
+    </properties>
+    <description>Db Migration command line tool</description>
+    <url>http://db-migration-cmdline.helyx.org</url>
+
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Helyx.org</name>
+        <url>http://www.helyx.org</url>
+    </organization>
+
+    <inceptionYear>2012</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>akinsella</id>
+            <name>Alexis Kinsella</name>
+            <email>alexis.kinsella@helyx.org</email>
+            <url>http://www.helyx.org</url>
+            <organization>Helyx.org</organization>
+            <organizationUrl>http://www.helyx.org</organizationUrl>
+            <roles>
+                <role>admin</role>
+                <role>packager</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com/akinsella/db-migration-cmdline.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/akinsella/db-migration-cmdline.git</developerConnection>
+        <url>https://github.com/akinsella/db-migration-cmdline</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>helyx.org-repo-release</id>
+            <url>ftp://ftp.helyx.org/maven/public/repository/release</url>
+        </repository>
+        <snapshotRepository>
+            <id>helyx.org-repo-snapshot</id>
+            <url>ftp://ftp.helyx.org/maven/public/repository/snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <issueManagement>
+        <system>Github Issues</system>
+        <url>https://ftp.com/akinsella/db-migration-cmdline/issues</url>
+    </issueManagement>
+
+    <!--
+        <repositories>
+            <repository>
+                <id>c5-public-repository</id>
+                <url>http://mvn.carbonfive.com/public</url>
+            </repository>
+        </repositories>
+    -->
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mc-release</id>
+            <name>Local Maven repository of releases</name>
+            <url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>${dom4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jaxen</groupId>
+            <artifactId>jaxen</artifactId>
+            <version>${jaxen.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jdom</artifactId>
+                    <groupId>jdom</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>xom</artifactId>
+                    <groupId>xom</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-cli</groupId>
+            <artifactId>commons-cli</artifactId>
+            <version>${commons-cli.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!-- DBMigration repository is down - Workaround with system dependency -->
+        <dependency>
+            <groupId>com.carbonfive.db-support</groupId>
+            <artifactId>db-support</artifactId>
+            <version>${db-migration.version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/db-support-0.9.9-m5.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.carbonfive.db-support</groupId>
+            <artifactId>db-migration</artifactId>
+            <version>${db-migration.version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/db-migration-0.9.9-m5.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <finalName>${artifactId}-${version}</finalName>
+
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>1.0-alpha-6</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <!-- Please set your MAVEN_OPTS if it is not done.
+                         export MAVEN_OPTS='-server -Xms128m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8' -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.2.2</version>
+                    <configuration>
+                        <!-- Declare profiles executed on a release -->
+                        <releaseProfiles>helyx-deploy,build-assemblies</releaseProfiles>
+                        <useReleaseProfile>true</useReleaseProfile>
+                        <preparationGoals>resources:resources</preparationGoals>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <goals>deploy</goals>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <descriptors>
+                            <descriptor>src/main/assembly/bin.xml</descriptor>
+                        </descriptors>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>attached</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.3</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.7</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.1.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.8.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <version>1.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.12</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>-Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=256m</argLine>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${basedir}/src/test/conf/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <version>1.9.0</version>
+                <configuration>
+                    <basedir>${basedir}</basedir>
+                    <header>${basedir}/etc/license/template/apache-license-2.0-header.txt</header>
+                    <quiet>false</quiet>
+                    <failIfMissing>true</failIfMissing>
+                    <aggregate>false</aggregate>
+                    <includes>
+                        <include>src/**</include>
+                    </includes>
+                    <excludes>
+                        <exclude>etc/CHANGELOG.txt</exclude>
+                        <exclude>etc/LICENSE.txt</exclude>
+                        <exclude>etc/README.txt</exclude>
+                        <exclude>etc/license/**</exclude>
+                    </excludes>
+                    <useDefaultExcludes>true</useDefaultExcludes>
+                    <mapping>
+                        <xml>XML_STYLE</xml>
+                        <java>JAVADOC_STYLE</java>
+                        <txt>TEXT</txt>
+                    </mapping>
+                    <useDefaultMapping>true</useDefaultMapping>
+                    <properties>
+                        <year>2012</year>
+                        <website>http://www.helyx.org</website>
+                        <organization>Helyx.org</organization>
+                        <author>Alexis Kinsella</author>
+                    </properties>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.7.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.helyx.dbmigration.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
