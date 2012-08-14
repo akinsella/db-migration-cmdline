@@ -82,14 +82,12 @@
         <url>https://ftp.com/akinsella/db-migration-cmdline/issues</url>
     </issueManagement>
 
-    <!--
-        <repositories>
-            <repository>
-                <id>c5-public-repository</id>
-                <url>http://mvn.carbonfive.com/public</url>
-            </repository>
-        </repositories>
-    -->
+    <repositories>
+        <repository>
+            <id>c5-public-repository</id>
+            <url>http://mvn.carbonfive.com/public</url>
+        </repository>
+    </repositories>
 
     <pluginRepositories>
         <pluginRepository>
@@ -182,16 +180,16 @@
             <groupId>com.carbonfive.db-support</groupId>
             <artifactId>db-support</artifactId>
             <version>${db-migration.version}</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/db-support-0.9.9-m5.jar</systemPath>
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${basedir}/lib/db-support-0.9.9-m5.jar</systemPath>-->
         </dependency>
 
         <dependency>
             <groupId>com.carbonfive.db-support</groupId>
             <artifactId>db-migration</artifactId>
             <version>${db-migration.version}</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/db-migration-0.9.9-m5.jar</systemPath>
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${basedir}/lib/db-migration-0.9.9-m5.jar</systemPath>-->
         </dependency>
 
         <dependency>
